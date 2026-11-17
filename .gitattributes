@@ -1,0 +1,37 @@
+# ============================================
+# Linguist — controle do gráfico de linguagens
+# ============================================
+
+# 1. MATA O HACK
+# O GitHub confunde arquivos .php do museu (ou pastas de libs) com Hack.
+# Força o PHP a ser reconhecido como PHP de verdade.
+*.php       linguist-language=PHP
+*.hh        linguist-documentation
+*.hack      linguist-documentation
+
+# Se tiver alguma pasta que o GitHub acha que é Hack, ignora ela toda:
+# (descomenta e ajusta o caminho se precisar)
+# caminho/para/pasta/** linguist-vendored
+
+# 2. O QUE DEVE CONTAR NO GRÁFICO (as peças do museu)
+*.php       linguist-detectable
+*.cs        linguist-detectable
+*.vb        linguist-detectable
+*.frm       linguist-detectable
+*.bas       linguist-detectable
+
+# 3. O QUE NÃO DEVE CONTAR (arquivos gerados, binários, configs)
+*.sql       linguist-documentation
+*.md        linguist-documentation
+*.html      linguist-documentation
+*.css       linguist-documentation
+*.js        linguist-documentation
+
+# 4. Delphi (se não quiser que apareça no gráfico, marca como vendored)
+# Se quiser que apareça, troca pra linguist-detectable
+*.pas       linguist-vendored
+*.dpr       linguist-vendored
+*.dfm       linguist-vendored
+
+# 5. Java (você tem Java no acervo? Se sim, deixa detectable)
+*.java      linguist-detectable
