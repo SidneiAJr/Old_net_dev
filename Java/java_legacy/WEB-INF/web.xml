@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC
+    "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<!--
+    web.xml - Deployment Descriptor
+    Era AQUI que a magica acontecia. Sem isso, nao rodava nada.
+    Antes do Servlet 3.0 nao tinha @WebServlet - tinha que declarar tudo aqui.
+    Era 2003, era assim, funcionava.
+-->
+
+<web-app>
+
+    <display-name>Sistema Escola - Acervo Legado Java</display-name>
+    <description>CRUD de alunos em Java puro - sem Spring, sem nada. Do jeito antigo.</description>
+
+    <!-- ============================================================ -->
+    <!-- Declaracao dos Servlets - equivalente a registrar as "paginas" -->
+    <!-- ============================================================ -->
+
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>br.com.escola.servlet.LoginServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ListaAlunosServlet</servlet-name>
+        <servlet-class>br.com.escola.servlet.ListaAlunosServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>GravaAlunoServlet</servlet-name>
+        <servlet-class>br.com.escola.servlet.GravaAlunoServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ExcluirAlunoServlet</servlet-name>
+        <servlet-class>br.com.escola.servlet.ExcluirAlunoServlet</servlet-class>
+    </servlet>
+
+    <!-- ============================================================ -->
+    <!-- Mapeamento de URL - equivalente ao .htaccess / Routes do PHP -->
+    <!-- ============================================================ -->
+
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ListaAlunosServlet</servlet-name>
+        <url-pattern>/ListaAlunosServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>GravaAlunoServlet</servlet-name>
+        <url-pattern>/GravaAlunoServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ExcluirAlunoServlet</servlet-name>
+        <url-pattern>/ExcluirAlunoServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- ============================================================ -->
+    <!-- Pagina padrao ao acessar a raiz do sistema -->
+    <!-- ============================================================ -->
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+    <!-- ============================================================ -->
+    <!-- Configuracao de sessao - 30 minutos, igual padrao PHP -->
+    <!-- ============================================================ -->
+
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+</web-app>
