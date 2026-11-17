@@ -2,6 +2,8 @@
 
 > *"Código que já foi pra produção, já sustentou empresa, e hoje não compila mais."*
 
+> Código Criado e corrigido com ajuda de claude | Porque so por deus KKK
+
 ---
 
 ## O que é isso aqui?
