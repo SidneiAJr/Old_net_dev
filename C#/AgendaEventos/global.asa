@@ -1,0 +1,41 @@
+<SCRIPT LANGUAGE="VBScript" RUNAT="Server">
+
+' ============================================================
+' global.asa — Agenda de Eventos / ASP Classico ~2001
+' ============================================================
+' NOTA HISTORICA:
+' Este arquivo e executado automaticamente pelo IIS.
+' Application_OnStart roda uma vez quando o servidor sobe.
+' Session_OnStart roda toda vez que um novo usuario acessa o site.
+' Nao existia .env — variaveis de ambiente eram colocadas aqui,
+' direto no codigo. String de conexao hardcoded era o padrao.
+' ============================================================
+
+Sub Application_OnStart
+    ' String de conexao pro banco Access (.mdb)
+    ' NOTA: na hospedagem real, o caminho era absoluto no servidor.
+    ' Server.MapPath converte caminho relativo em absoluto — era a solucao
+    ' pra nao ter que saber o caminho fisico do servidor.
+    ' O equivalente moderno seria uma variavel de ambiente no .env
+    Application("ConnString") = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & _
+                                 Server.MapPath("banco/eventos.mdb")
+    ' NOTA: Jet.OLEDB.4.0 era o driver do Access. Morreu no Windows 64-bit.
+    ' Em servidores 64-bit voce precisava do ACE.OLEDB.12.0 ou migrar pro SQL Server.
+    ' Muita empresa quebrou a cabeca com isso na migracao pro Windows Server 2008.
+End Sub
+
+Sub Application_OnEnd
+End Sub
+
+Sub Session_OnStart
+    ' Timeout da sessao em minutos
+    ' NOTA: sessao era salva na memoria do IIS, nao em banco.
+    ' Em webfarm (varios servidores) a sessao morria se voce ia pro servidor errado.
+    ' Solucao da epoca: "sticky session" — usuario sempre no mesmo servidor.
+    Session.Timeout = 30
+End Sub
+
+Sub Session_OnEnd
+End Sub
+
+</SCRIPT>
