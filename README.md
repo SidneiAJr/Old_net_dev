@@ -132,4 +132,3 @@ Quanto mais velho e mais esquecido, melhor.
 
 ---
 
-<sub>Nenhum sistema foi prejudicado na criação deste repositório. Alguns já estavam bem prejudicados antes.</sub>
